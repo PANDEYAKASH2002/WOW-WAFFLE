@@ -23,7 +23,6 @@ export const Header: React.FC = () => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
 
-      // Scroll Spy logic
       const sections = NAV_ITEMS.map((item) => item.href.substring(1));
       const scrollPosition = window.scrollY + 120;
 
@@ -64,25 +63,47 @@ export const Header: React.FC = () => {
           : 'bg-transparent py-5 border-b border-transparent'
       }`}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
-        {/* LOGO LEFT */}
-     <a 
-  href="#home" 
-  onClick={(e) => handleNavClick(e, '#home')}
-  className="flex items-center gap-2 group"
-  aria-label="WOW! WAFFLE Home"
->
-  <img 
-    src="/images/waffle-logo.png" 
-    alt="WOW! WAFFLE Logo" 
-    className="h-8 w-auto"
-  />
-  {/* <WowWaffleLogo size="sm" /> */}
-  <WaffleSlice size={22} className="hidden sm:block text-[#FFD400] opacity-80 group-hover:rotate-12 transition-transform duration-300" />
-</a>
+      {/*
+        Mobile layout: 3-column grid (left / center / right)
+        Desktop layout: flex with logo left, nav center, CTA right
+      */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 
+                      grid grid-cols-3 items-center 
+                      lg:flex lg:justify-between">
 
-        {/* DESKTOP NAVIGATION */}
-        <nav className="hidden lg:flex items-center space-x-1 bg-[#111111]/80 px-6 py-2 rounded-full border border-[#333333]">
+        {/* ============ MOBILE LEFT: HAMBURGER ============ */}
+        <div className="flex items-center lg:hidden">
+          <button
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            className="p-2.5 rounded-xl bg-[#171717] text-[#FFD400] border border-[#333333] hover:border-[#FFD400] transition-colors"
+            aria-label="Toggle Navigation Menu"
+          >
+            {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+          </button>
+        </div>
+
+        {/* ============ LOGO (centered on mobile, left on desktop) ============ */}
+        <a
+          href="#home"
+          onClick={(e) => handleNavClick(e, '#home')}
+          className="flex items-center justify-center lg:justify-start gap-2 group
+                     lg:order-1"
+          aria-label="WOW! WAFFLE Home"
+        >
+          <img
+            src="/images/waffle-logo.png"
+            alt="WOW! WAFFLE Logo"
+            className="h-8 w-auto"
+          />
+          {/* <WowWaffleLogo size="sm" /> */}
+          <WaffleSlice
+            size={22}
+            className="hidden sm:block text-[#FFD400] opacity-80 group-hover:rotate-12 transition-transform duration-300"
+          />
+        </a>
+
+        {/* ============ DESKTOP NAV (hidden on mobile) ============ */}
+        <nav className="hidden lg:flex items-center space-x-1 bg-[#111111]/80 px-6 py-2 rounded-full border border-[#333333] lg:order-2">
           {NAV_ITEMS.map((item) => {
             const isActive = activeSection === item.href.substring(1);
             return (
@@ -103,8 +124,8 @@ export const Header: React.FC = () => {
           })}
         </nav>
 
-        {/* RIGHT CTA BUTTONS */}
-        <div className="hidden lg:flex items-center gap-3">
+        {/* ============ DESKTOP CTA (hidden on mobile) ============ */}
+        <div className="hidden lg:flex items-center gap-3 lg:order-3">
           {/* <ConfettiButton label="🎉 Confetti" variant="nav" /> */}
           <a
             href="#branches"
@@ -116,15 +137,10 @@ export const Header: React.FC = () => {
           </a>
         </div>
 
-        {/* MOBILE HAMBURGER BUTTON */}
-        <div className="flex items-center gap-2 lg:hidden">
-          <button
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="p-2.5 rounded-xl bg-[#171717] text-[#FFD400] border border-[#333333] hover:border-[#FFD400] transition-colors"
-            aria-label="Toggle Navigation Menu"
-          >
-            {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-          </button>
+        {/* ============ MOBILE RIGHT: EMPTY SPACER (keeps logo centered) ============ */}
+        <div className="flex justify-end lg:hidden" aria-hidden="true">
+          {/* Intentionally empty to balance the grid so logo sits perfectly in the middle.
+              You can put a small icon/button here if you want. */}
         </div>
       </div>
 
