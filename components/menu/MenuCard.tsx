@@ -16,7 +16,7 @@ export const MenuCard: React.FC<MenuCardProps> = ({ item }) => {
     <div className="relative group bg-[#171717] hover:bg-[#1c1c1c] rounded-2xl p-5 border border-[#2a2a2a] hover:border-[#FFD400]/70 transition-all duration-300 shadow-[0_8px_30px_rgba(0,0,0,0.5)] hover:shadow-[0_12px_40px_rgba(255,212,0,0.15)] flex flex-col justify-between h-full">
       {/* BEST SELLER BADGE */}
       {item.isBestSeller && (
-        <div className="absolute -top-3 right-4 z-10 bg-gradient-to-r from-[#FFD400] to-[#FFE95B] text-[#080808] text-[11px] font-black px-3 py-1 rounded-full uppercase tracking-wider shadow-[0_0_12px_rgba(255,212,0,0.6)] flex items-center gap-1">
+        <div className="absolute -top-3 right-4 z-10 bg-gradient-to-r from-[#FFD400] to-[#FFE95B] text-white text-[11px] font-black px-3 py-1 rounded-full uppercase tracking-wider shadow-[0_0_12px_rgba(255,212,0,0.6)] flex items-center gap-1">
           <Flame className="w-3.5 h-3.5 fill-[#080808]" />
           <span>BEST SELLER</span>
         </div>

@@ -118,7 +118,6 @@ export const Header: React.FC = () => {
 
         {/* MOBILE HAMBURGER BUTTON */}
         <div className="flex items-center gap-2 lg:hidden">
-          <ConfettiButton label="🎉" variant="nav" className="px-3 py-1.5 text-xs" />
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             className="p-2.5 rounded-xl bg-[#171717] text-[#FFD400] border border-[#333333] hover:border-[#FFD400] transition-colors"
