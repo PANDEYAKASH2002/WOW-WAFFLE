@@ -63,47 +63,29 @@ export const Header: React.FC = () => {
           : 'bg-transparent py-5 border-b border-transparent'
       }`}
     >
-      {/*
-        Mobile layout: 3-column grid (left / center / right)
-        Desktop layout: flex with logo left, nav center, CTA right
-      */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 
-                      grid grid-cols-3 items-center 
-                      lg:flex lg:justify-between">
-
-        {/* ============ MOBILE LEFT: HAMBURGER ============ */}
-        <div className="flex items-center lg:hidden">
-          <button
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="p-2.5 rounded-xl bg-[#171717] text-[#FFD400] border border-[#333333] hover:border-[#FFD400] transition-colors"
-            aria-label="Toggle Navigation Menu"
-          >
-            {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-          </button>
-        </div>
-
-        {/* ============ LOGO (centered on mobile, left on desktop) ============ */}
+      {/* relative so the logo can be absolutely centered on mobile */}
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between min-h-[40px]">
+        {/* LOGO: centered on mobile/tablet, normal left position on desktop */}
         <a
           href="#home"
           onClick={(e) => handleNavClick(e, '#home')}
-          className="flex items-center justify-center lg:justify-start gap-2 group
-                     lg:order-1"
+          className="absolute left-1/2 -translate-x-1/2 lg:static lg:left-auto lg:translate-x-0 flex items-center gap-2 group"
           aria-label="WOW! WAFFLE Home"
         >
           <img
             src="/images/waffle-logo.png"
             alt="WOW! WAFFLE Logo"
-            className="h-8 w-auto"
+            className="h-12 w-auto"
           />
           {/* <WowWaffleLogo size="sm" /> */}
           <WaffleSlice
             size={22}
-            className="hidden sm:block text-[#FFD400] opacity-80 group-hover:rotate-12 transition-transform duration-300"
+            className="hidden lg:block text-[#FFD400] opacity-80 group-hover:rotate-12 transition-transform duration-300"
           />
         </a>
 
-        {/* ============ DESKTOP NAV (hidden on mobile) ============ */}
-        <nav className="hidden lg:flex items-center space-x-1 bg-[#111111]/80 px-6 py-2 rounded-full border border-[#333333] lg:order-2">
+        {/* DESKTOP NAVIGATION */}
+        <nav className="hidden lg:flex items-center space-x-1 bg-[#111111]/80 px-6 py-2 rounded-full border border-[#333333]">
           {NAV_ITEMS.map((item) => {
             const isActive = activeSection === item.href.substring(1);
             return (
@@ -124,23 +106,30 @@ export const Header: React.FC = () => {
           })}
         </nav>
 
-        {/* ============ DESKTOP CTA (hidden on mobile) ============ */}
-        <div className="hidden lg:flex items-center gap-3 lg:order-3">
-          {/* <ConfettiButton label="🎉 Confetti" variant="nav" /> */}
-          <a
-            href="#branches"
-            onClick={(e) => handleNavClick(e, '#branches')}
-            className="flex items-center gap-2 bg-[#171717] hover:bg-[#FFD400] text-white hover:text-[#080808] border border-[#FFD400]/40 hover:border-[#FFD400] px-4 py-2 rounded-full text-xs font-black uppercase tracking-wider transition-all duration-300 shadow-md group"
-          >
-            <MapPin className="w-4 h-4 text-[#FFD400] group-hover:text-[#080808] transition-colors" />
-            <span>Find Nearest Outlet</span>
-          </a>
-        </div>
+        {/* RIGHT SIDE: CTA (desktop) + HAMBURGER (mobile) */}
+        {/* ml-auto keeps this on the right even though the logo is out of flow on mobile */}
+        <div className="flex items-center gap-3 ml-auto lg:ml-0">
+          {/* DESKTOP CTA */}
+          <div className="hidden lg:flex items-center gap-3">
+            {/* <ConfettiButton label="🎉 Confetti" variant="nav" /> */}
+            <a
+              href="#branches"
+              onClick={(e) => handleNavClick(e, '#branches')}
+              className="flex items-center gap-2 bg-[#171717] hover:bg-[#FFD400] text-white hover:text-[#080808] border border-[#FFD400]/40 hover:border-[#FFD400] px-4 py-2 rounded-full text-xs font-black uppercase tracking-wider transition-all duration-300 shadow-md group"
+            >
+              <MapPin className="w-4 h-4 text-[#FFD400] group-hover:text-[#080808] transition-colors" />
+              <span>Find Nearest Outlet</span>
+            </a>
+          </div>
 
-        {/* ============ MOBILE RIGHT: EMPTY SPACER (keeps logo centered) ============ */}
-        <div className="flex justify-end lg:hidden" aria-hidden="true">
-          {/* Intentionally empty to balance the grid so logo sits perfectly in the middle.
-              You can put a small icon/button here if you want. */}
+          {/* MOBILE HAMBURGER (right side) */}
+          <button
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            className="lg:hidden p-2.5 rounded-xl bg-[#171717] text-[#FFD400] border border-[#333333] hover:border-[#FFD400] transition-colors"
+            aria-label="Toggle Navigation Menu"
+          >
+            {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+          </button>
         </div>
       </div>
 
