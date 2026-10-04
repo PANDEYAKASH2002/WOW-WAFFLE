@@ -1,36 +1,71 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# WOW! WAFFLE — Premium Waffle Cart SPA
 
-## Getting Started
+A high-performance, visually stunning, single-page application built for **WOW! WAFFLE** with Next.js 16, TypeScript, Tailwind CSS, Framer Motion, and custom SVG illustrations.
 
-First, run the development server:
+---
 
+## 🌟 Key Features
+
+- **Bold Brand Aesthetics**: Custom black-and-yellow color scheme (`#080808` & `#FFD400`) with Google Display Fonts (`Bowlby One SC` & `Poppins`).
+- **Interactive Menu**: Full menu recreating Classic, Special, Kid's Special, Premium, and Fudge Brownies with Mini/Lolly pricing in `₹`.
+- **Branch Directory (8 Outlets)**: Confirmed outlet in Ankleshwar with Google Maps directions, plus 7 editable placeholder records with live instant search.
+- **Interactive Confetti Effects**: Celebration confetti buttons using `canvas-confetti` with custom toast notifications.
+- **Custom SVG System**: Dedicated SVG waffle illustrations (`WowWaffleLogo`, `WaffleIcon`, `WaffleSlice`, `WaffleStack`, `StarBurst`, `Sparkle`, `WowSticker`).
+- **Zero PostCSS Constraint**: Configured directly with Next.js 16 without custom PostCSS pipelines or `postcss.config.js`.
+
+---
+
+## 🚀 Getting Started
+
+### Prerequisites
+- Node.js 18.x or higher
+- npm 9.x or higher
+
+### Installation
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Development Server
+```bash
+npm run dev
+```
+Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Production Build
+```bash
+npm run build
+npm run start
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+## 🛠️ How to Update Menu & Branch Data
 
-To learn more about Next.js, take a look at the following resources:
+### 1. Updating Menu Items & Prices
+Edit [`data/menu.ts`](file:///C:/Users/imdea/Desktop/waffle/data/menu.ts):
+```typescript
+{
+  id: 'classic-choco-river',
+  name: 'Choco River',
+  category: 'Classic',
+  prices: { mini: 60, lolly: 90 },
+  description: 'Crispy waffle drenched in rich, flowing milk chocolate.',
+}
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### 2. Updating Outlet / Branch Information
+Edit [`data/branches.ts`](file:///C:/Users/imdea/Desktop/waffle/data/branches.ts):
+```typescript
+{
+  id: 'branch-02',
+  code: 'Branch 02',
+  name: 'WOW! WAFFLE — Vadodara',
+  city: 'Vadodara',
+  state: 'Gujarat',
+  address: 'Shop No. 12, Alkapuri, Vadodara, Gujarat',
+  mapsUrl: 'https://www.google.com/maps/search/?api=1&query=...',
+  isConfirmed: true,
+  tagline: 'Opening Soon in Alkapuri'
+}
+```

@@ -1,5 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Bowlby+One+SC&family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
-
 /*! tailwindcss v4.3.3 | MIT License | https://tailwindcss.com */
 @layer properties;
 @layer theme, base, components, utilities;
@@ -1641,6 +1639,7 @@
     }
   }
 }
+@import url('https://fonts.googleapis.com/css2?family=Bowlby+One+SC&family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
 :root {
   --background: #080808;
   --foreground: #FFFFFF;
@@ -2055,56 +2054,3 @@ body {
     }
   }
 }
-
-html {
-  scroll-behavior: smooth;
-  color-scheme: dark;
-}
-
-body {
-  background-color: #080808;
-  color: #ffffff;
-  font-family: 'Poppins', system-ui, -apple-system, sans-serif;
-  overflow-x: hidden;
-  margin: 0;
-  padding: 0;
-}
-
-.font-display {
-  font-family: 'Bowlby One SC', 'Impact', sans-serif;
-}
-
-::-webkit-scrollbar {
-  width: 8px;
-}
-
-::-webkit-scrollbar-track {
-  background: #080808;
-}
-
-::-webkit-scrollbar-thumb {
-  background: #262626;
-  border-radius: 4px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: #FFD400;
-}
-
-.no-scrollbar::-webkit-scrollbar {
-  display: none;
-}
-.no-scrollbar {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-}
-
-@keyframes pulseSubtle {
-  0%, 100% { opacity: 1; transform: scale(1); }
-  50% { opacity: 0.92; transform: scale(1.02); }
-}
-
-.animate-pulse-subtle {
-  animation: pulseSubtle 4s ease-in-out infinite;
-}
-
