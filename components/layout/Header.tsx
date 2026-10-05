@@ -11,7 +11,7 @@ const NAV_ITEMS = [
   { label: 'Menu', href: '#menu' },
   { label: 'Branches', href: '#branches' },
   { label: 'About Us', href: '#about' },
-  { label: 'Contact', href: '#contact' },
+  // { label: 'Contact', href: '#contact' },
 ];
 
 export const Header: React.FC = () => {

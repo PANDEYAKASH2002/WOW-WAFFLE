@@ -38,7 +38,7 @@ export default function HomePage() {
       <ConfettiSection />
 
       {/* CONTACT SECTION (#contact) */}
-      <ContactSection />
+      {/* <ContactSection /> */}
 
       {/* FOOTER */}
       <Footer />
