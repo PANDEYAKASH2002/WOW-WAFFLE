@@ -23,7 +23,10 @@ export const MenuListRow: React.FC<MenuListRowProps> = ({ item }) => {
             onError={(e) => {
               (e.target as HTMLImageElement).src = '/images/menu/default_waffle.jpg';
             }}
-            className="w-full h-full object-cover rotate-180   "
+            className="w-full h-full object-cover"
+            style={{ 
+    transform: `rotate(${item.rotate || 0}deg)` 
+  }}
           />
         </div>
 

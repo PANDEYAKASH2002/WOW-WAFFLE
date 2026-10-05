@@ -21,5 +21,6 @@ export interface MenuItem {
   description: string;
   isBestSeller?: boolean;
   image?: string;
+    rotate?: number; 
   popularCombo?: string;
 }

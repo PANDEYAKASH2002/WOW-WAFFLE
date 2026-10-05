@@ -8,6 +8,7 @@ export const MENU_ITEMS: MenuItem[] = [
     category: 'Classic',
     prices: { mini: 60, lolly: 90 },
     description: '',
+    rotate: 180,
     image: '/images/choco-river.png',
   },
   {
@@ -42,7 +43,7 @@ export const MENU_ITEMS: MenuItem[] = [
     category: 'Special',
     prices: { mini: 70, lolly: 110 },
     description: '',
-    image: '/images/menu/special-brownie-hill.jpg',
+    image: '/images/brownie-hill.png',
   },
   {
     id: 'special-nutella-land',
@@ -50,7 +51,7 @@ export const MENU_ITEMS: MenuItem[] = [
     category: 'Special',
     prices: { mini: 70, lolly: 110 },
     description: '',
-    image: '/images/menu/special-nutella-land.jpg',
+    image: '/images/nutella-land.png',
   },
   {
     id: 'special-crunchy-kit-kat',
@@ -58,7 +59,7 @@ export const MENU_ITEMS: MenuItem[] = [
     category: 'Special',
     prices: { mini: 70, lolly: 110 },
     description: '',
-    image: '/images/menu/special-crunchy-kit-kat.jpg',
+    image: '/images/crunchy-kitkat.png',
   },
   {
     id: 'special-creamy-red-velvet',
@@ -76,7 +77,7 @@ export const MENU_ITEMS: MenuItem[] = [
     category: "Kid's Special",
     prices: { mini: 70, lolly: 110 },
     description: '',
-    image: '/images/menu/kids-gemstone.jpg',
+    image: '/images/gemstone.png',
   },
   {
     id: 'kids-dusty-fairy-land',
@@ -84,7 +85,7 @@ export const MENU_ITEMS: MenuItem[] = [
     category: "Kid's Special",
     prices: { mini: 70, lolly: 110 },
     description: '',
-    image: '/images/menu/kids-dusty-fairy-land.jpg',
+    image: '/images/dusty-fairy-land.png',
   },
   {
     id: 'kids-strawberry-berry',
@@ -92,7 +93,7 @@ export const MENU_ITEMS: MenuItem[] = [
     category: "Kid's Special",
     prices: { mini: 70, lolly: 110 },
     description: '',
-    image: '/images/menu/kids-strawberry-berry.jpg',
+    image: '/images/strawberry-berry.png',
   },
 
   // PREMIUM CATEGORY
@@ -102,7 +103,7 @@ export const MENU_ITEMS: MenuItem[] = [
     category: 'Premium',
     prices: { mini: 90, lolly: 140 },
     description: '',
-    image: '/images/menu/premium-biscoff-bliss.jpg',
+    image: '/images/biscoff-bliss.png',
   },
   {
     id: 'premium-almond-nuts',
@@ -110,7 +111,7 @@ export const MENU_ITEMS: MenuItem[] = [
     category: 'Premium',
     prices: { mini: 90, lolly: 140 },
     description: '',
-    image: '/images/menu/premium-almond-nuts.jpg',
+    image: '/images/almond-nuts.png',
   },
   {
     id: 'premium-coffee-mocha-delight',
@@ -118,7 +119,7 @@ export const MENU_ITEMS: MenuItem[] = [
     category: 'Premium',
     prices: { mini: 90, lolly: 140 },
     description: '',
-    image: '/images/menu/premium-coffee-mocha-delight.jpg',
+    image: '/images/coffee-mocha-delight.png',
   },
   {
     id: 'premium-blue-berry-blast',
@@ -126,7 +127,7 @@ export const MENU_ITEMS: MenuItem[] = [
     category: 'Premium',
     prices: { mini: 90, lolly: 140 },
     description: '',
-    image: '/images/menu/premium-blue-berry-blast.jpg',
+    image: '/images/blue-berry-blast.png',
   },
   {
     id: 'premium-kit-kat-nutella',
@@ -134,7 +135,7 @@ export const MENU_ITEMS: MenuItem[] = [
     category: 'Premium',
     prices: { mini: 90, lolly: 140 },
     description: '',
-    image: '/images/menu/premium-kit-kat-nutella.jpg',
+    image: '/images/kit-kat-nutella.png',
   },
   {
     id: 'premium-brownie-nutella',
@@ -142,7 +143,7 @@ export const MENU_ITEMS: MenuItem[] = [
     category: 'Premium',
     prices: { mini: 90, lolly: 140 },
     description: '',
-    image: '/images/menu/premium-brownie-nutella.jpg',
+    image: '/images/brownie-nutella.png',
   },
   {
     id: 'premium-peanut-butter',
@@ -150,7 +151,7 @@ export const MENU_ITEMS: MenuItem[] = [
     category: 'Premium',
     prices: { mini: 90, lolly: 140 },
     description: '',
-    image: '/images/menu/premium-peanut-butter.jpg',
+    image: '/images/peanut-butter.png',
   },
 
   // FUDGE BROWNIE CATEGORY
@@ -160,7 +161,7 @@ export const MENU_ITEMS: MenuItem[] = [
     category: 'Fudge Brownie',
     prices: { price: 120 },
     description: '',
-    image: '/images/menu/brownie-triple-chocolate.jpg',
+    image: '/images/triple-chocolate-brownie.png',
   },
   {
     id: 'brownie-choco-chips',
@@ -168,7 +169,7 @@ export const MENU_ITEMS: MenuItem[] = [
     category: 'Fudge Brownie',
     prices: { price: 130 },
     description: '',
-    image: '/images/menu/brownie-choco-chips.jpg',
+    image: '/images/brownie-choco-chips.png',
   },
   {
     id: 'brownie-choco-balls',
@@ -177,7 +178,7 @@ export const MENU_ITEMS: MenuItem[] = [
     prices: { price: 150 },
     isBestSeller: true,
     description: '',
-    image: '/images/menu/brownie-choco-balls.jpg',
+    image: '/images/brownie-choco-balls.png',
   },
   {
     id: 'brownie-oreo',
@@ -185,7 +186,7 @@ export const MENU_ITEMS: MenuItem[] = [
     category: 'Fudge Brownie',
     prices: { price: 150 },
     description: '',
-    image: '/images/menu/brownie-oreo.jpg',
+    image: '/images/brownie-oreo.png',
   },
   {
     id: 'brownie-milk-chocolate',
@@ -193,7 +194,7 @@ export const MENU_ITEMS: MenuItem[] = [
     category: 'Fudge Brownie',
     prices: { price: 150 },
     description: '',
-    image: '/images/menu/brownie-milk-chocolate.jpg',
+    image: '/images/brownie-milk-chocolate.png',
   },
   {
     id: 'brownie-white-chocolate',
@@ -201,7 +202,7 @@ export const MENU_ITEMS: MenuItem[] = [
     category: 'Fudge Brownie',
     prices: { price: 160 },
     description: '',
-    image: '/images/menu/brownie-white-chocolate.jpg',
+    image: '/images/brownie-white-chocolate.png',
   },
   {
     id: 'brownie-nutella',
@@ -209,7 +210,7 @@ export const MENU_ITEMS: MenuItem[] = [
     category: 'Fudge Brownie',
     prices: { price: 180 },
     description: '',
-    image: '/images/menu/brownie-nutella.jpg',
+    image: '/images/brownie-nutella1.png',
   },
   {
     id: 'brownie-biscoff',
@@ -217,6 +218,6 @@ export const MENU_ITEMS: MenuItem[] = [
     category: 'Fudge Brownie',
     prices: { price: 180 },
     description: '',
-    image: '/images/menu/brownie-biscoff.jpg',
+    image: '/images/brownie-biscoff-fudge.png',
   }
 ];
