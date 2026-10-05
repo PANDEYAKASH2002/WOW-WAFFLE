@@ -27,9 +27,7 @@ export const MENU_ITEMS: MenuItem[] = [
     prices: { mini: 60, lolly: 90 },
     description: '',
      rotate: 190,
-     width: 220,        // ✅ Width in pixels
-  height: 220,       // ✅ Height in pixels
-  objectFit: 'contain',
+     
     image: '/images/choco-loaded.png',
   },
 
