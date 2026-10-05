@@ -17,6 +17,7 @@ export const MENU_ITEMS: MenuItem[] = [
     category: 'Classic',
     prices: { mini: 60, lolly: 90 },
     description: '',
+     rotate: 180,
     image: '/images/triple-chocolate.png',
   },
   {
@@ -25,6 +26,10 @@ export const MENU_ITEMS: MenuItem[] = [
     category: 'Classic',
     prices: { mini: 60, lolly: 90 },
     description: '',
+     rotate: 190,
+     width: 220,        // ✅ Width in pixels
+  height: 220,       // ✅ Height in pixels
+  objectFit: 'contain',
     image: '/images/choco-loaded.png',
   },
 
@@ -35,6 +40,7 @@ export const MENU_ITEMS: MenuItem[] = [
     category: 'Special',
     prices: { mini: 70, lolly: 110 },
     description: '',
+     rotate: 90,
     image: '/images/creamy-oreo.png',
   },
   {
@@ -43,6 +49,7 @@ export const MENU_ITEMS: MenuItem[] = [
     category: 'Special',
     prices: { mini: 70, lolly: 110 },
     description: '',
+     rotate: 180,
     image: '/images/brownie-hill.png',
   },
   {
@@ -51,6 +58,7 @@ export const MENU_ITEMS: MenuItem[] = [
     category: 'Special',
     prices: { mini: 70, lolly: 110 },
     description: '',
+     rotate: 180,
     image: '/images/nutella-land.png',
   },
   {
@@ -59,6 +67,7 @@ export const MENU_ITEMS: MenuItem[] = [
     category: 'Special',
     prices: { mini: 70, lolly: 110 },
     description: '',
+     rotate: 180,
     image: '/images/crunchy-kitkat.png',
   },
   {
@@ -67,7 +76,7 @@ export const MENU_ITEMS: MenuItem[] = [
     category: 'Special',
     prices: { mini: 70, lolly: 110 },
     description: '',
-    image: '/images/menu/special-creamy-red-velvet.jpg',
+    // image: '/images/creamy-red-velvet.png',
   },
 
   // KID'S SPECIAL CATEGORY
@@ -77,6 +86,7 @@ export const MENU_ITEMS: MenuItem[] = [
     category: "Kid's Special",
     prices: { mini: 70, lolly: 110 },
     description: '',
+     rotate: 180,
     image: '/images/gemstone.png',
   },
   {
@@ -85,6 +95,7 @@ export const MENU_ITEMS: MenuItem[] = [
     category: "Kid's Special",
     prices: { mini: 70, lolly: 110 },
     description: '',
+     rotate: 180,
     image: '/images/dusty-fairy-land.png',
   },
   {
@@ -93,6 +104,7 @@ export const MENU_ITEMS: MenuItem[] = [
     category: "Kid's Special",
     prices: { mini: 70, lolly: 110 },
     description: '',
+     rotate: 180,
     image: '/images/strawberry-berry.png',
   },
 
@@ -103,6 +115,7 @@ export const MENU_ITEMS: MenuItem[] = [
     category: 'Premium',
     prices: { mini: 90, lolly: 140 },
     description: '',
+     rotate: 180,
     image: '/images/biscoff-bliss.png',
   },
   {
@@ -111,6 +124,7 @@ export const MENU_ITEMS: MenuItem[] = [
     category: 'Premium',
     prices: { mini: 90, lolly: 140 },
     description: '',
+     rotate: 180,
     image: '/images/almond-nuts.png',
   },
   {
@@ -119,6 +133,7 @@ export const MENU_ITEMS: MenuItem[] = [
     category: 'Premium',
     prices: { mini: 90, lolly: 140 },
     description: '',
+     rotate: 180,
     image: '/images/coffee-mocha-delight.png',
   },
   {
@@ -127,6 +142,7 @@ export const MENU_ITEMS: MenuItem[] = [
     category: 'Premium',
     prices: { mini: 90, lolly: 140 },
     description: '',
+     rotate: 180,
     image: '/images/blue-berry-blast.png',
   },
   {
@@ -135,6 +151,7 @@ export const MENU_ITEMS: MenuItem[] = [
     category: 'Premium',
     prices: { mini: 90, lolly: 140 },
     description: '',
+     rotate: 180,
     image: '/images/kit-kat-nutella.png',
   },
   {
@@ -143,6 +160,7 @@ export const MENU_ITEMS: MenuItem[] = [
     category: 'Premium',
     prices: { mini: 90, lolly: 140 },
     description: '',
+     rotate: 180,
     image: '/images/brownie-nutella.png',
   },
   {
@@ -151,6 +169,7 @@ export const MENU_ITEMS: MenuItem[] = [
     category: 'Premium',
     prices: { mini: 90, lolly: 140 },
     description: '',
+     rotate: 180,
     image: '/images/peanut-butter.png',
   },
 

@@ -9,21 +9,22 @@ interface MenuListRowProps {
 }
 
 export const MenuListRow: React.FC<MenuListRowProps> = ({ item }) => {
-  const imgSrc = item.image || '/images/menu/default_waffle.jpg';
+  const imgSrc = item.image;
 
   return (
     <div className="group bg-[#141414] hover:bg-[#1a1a1a] rounded-xl p-3.5 sm:p-4 border border-[#262626] hover:border-[#FFD400]/60 transition-all duration-300 shadow-md flex flex-row items-center justify-between gap-3 sm:gap-4">
       {/* LEFT SIDE: ITEM IMAGE & TITLE */}
       <div className="flex items-center gap-3.5 min-w-0 flex-1">
         {/* ITEM IMAGE TAG */}
-        <div className="relative w-12 h-12 sm:w-14 sm:h-14 rounded-xl overflow-hidden bg-[#080808] border border-[#FFD400]/40 shrink-0 group-hover:scale-105 transition-transform duration-300 shadow-sm">
+        <div className="relative w-12 h-12 sm:w-14 sm:h-14 rounded-xl overflow-hidden bg-[#080808] border border-[#FFD400]/40 shrink-0 group-hover:scale-105 transition-transform duration-300 shadow-sm" 
+        >
           <img
             src={imgSrc}
             alt={item.name}
             onError={(e) => {
               (e.target as HTMLImageElement).src = '/images/menu/default_waffle.jpg';
             }}
-            className="w-full h-full object-cover"
+            className="w-full h-full object-contain"
             style={{ 
     transform: `rotate(${item.rotate || 0}deg)` 
   }}
