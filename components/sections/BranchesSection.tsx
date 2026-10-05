@@ -41,7 +41,7 @@ export const BranchesSection: React.FC = () => {
             className="text-3xl sm:text-5xl md:text-6xl font-black uppercase text-white tracking-tight mb-4"
             style={{ fontFamily: "'Bowlby One SC', 'Impact', sans-serif" }}
           >
-            8 BRANCHES. <span className="text-[#FFD400]">ONE WAFFLE LOVE.</span>
+            6 BRANCHES. <span className="text-[#FFD400]">ONE WAFFLE LOVE.</span>
           </h2>
 
           <p className="text-base sm:text-lg text-[#BDBDBD] font-normal leading-relaxed">
@@ -55,7 +55,7 @@ export const BranchesSection: React.FC = () => {
         {/* BRANCH CARDS GRID */}
         <motion.div
           layout
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-6"
         >
           <AnimatePresence mode="popLayout">
             {filteredBranches.map((branch) => (
