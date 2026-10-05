@@ -8,7 +8,7 @@ export const MENU_ITEMS: MenuItem[] = [
     category: 'Classic',
     prices: { mini: 60, lolly: 90 },
     description: '',
-    image: '/images/menu/classic-choco-river.jpg',
+    image: '/images/choco-river.png',
   },
   {
     id: 'classic-triple-chocolate',
@@ -16,7 +16,7 @@ export const MENU_ITEMS: MenuItem[] = [
     category: 'Classic',
     prices: { mini: 60, lolly: 90 },
     description: '',
-    image: '/images/menu/classic-triple-chocolate.jpg',
+    image: '/images/triple-chocolate.png',
   },
   {
     id: 'classic-chocolate-loaded',
@@ -24,7 +24,7 @@ export const MENU_ITEMS: MenuItem[] = [
     category: 'Classic',
     prices: { mini: 60, lolly: 90 },
     description: '',
-    image: '/images/menu/classic-chocolate-loaded.jpg',
+    image: '/images/choco-loaded.png',
   },
 
   // SPECIAL CATEGORY
@@ -34,7 +34,7 @@ export const MENU_ITEMS: MenuItem[] = [
     category: 'Special',
     prices: { mini: 70, lolly: 110 },
     description: '',
-    image: '/images/menu/special-creamy-oreo.jpg',
+    image: '/images/creamy-oreo.png',
   },
   {
     id: 'special-brownie-hill',

@@ -23,7 +23,7 @@ export const MenuListRow: React.FC<MenuListRowProps> = ({ item }) => {
             onError={(e) => {
               (e.target as HTMLImageElement).src = '/images/menu/default_waffle.jpg';
             }}
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover rotate-180   "
           />
         </div>
 
@@ -52,20 +52,20 @@ export const MenuListRow: React.FC<MenuListRowProps> = ({ item }) => {
           </div>
         ) : (
           /* Dual Pricing (Mini & Lolly) */
-          <div className="flex items-center gap-1.5 sm:gap-2">
-            {item.prices.mini !== undefined && (
-              <div className="bg-[#080808] border border-[#333333] px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-xl flex items-center gap-1.5">
-                <span className="text-[10px] sm:text-[11px] font-bold text-[#888888] uppercase">Mini</span>
-                <span className="text-sm sm:text-base font-black text-[#FFD400]">₹{item.prices.mini}</span>
-              </div>
-            )}
-            {item.prices.lolly !== undefined && (
-              <div className="bg-[#FFD400]/15 border border-[#FFD400]/40 px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-xl flex items-center gap-1.5">
-                <span className="text-[10px] sm:text-[11px] font-bold text-[#FFE95B] uppercase">Lolly</span>
-                <span className="text-sm sm:text-base font-black text-[#FFD400]">₹{item.prices.lolly}</span>
-              </div>
-            )}
-          </div>
+        <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-1.5 sm:gap-2">
+  {item.prices.mini !== undefined && (
+    <div className="bg-[#080808] border border-[#333333] px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-xl flex items-center justify-between sm:justify-start gap-1.5">
+      <span className="text-[10px] sm:text-[11px] font-bold text-[#888888] uppercase">Mini</span>
+      <span className="text-sm sm:text-base font-black text-[#FFD400]">₹{item.prices.mini}</span>
+    </div>
+  )}
+  {item.prices.lolly !== undefined && (
+    <div className="bg-[#FFD400]/15 border border-[#FFD400]/40 px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-xl flex items-center justify-between sm:justify-start gap-1.5">
+      <span className="text-[10px] sm:text-[11px] font-bold text-[#FFE95B] uppercase">Lolly</span>
+      <span className="text-sm sm:text-base font-black text-[#FFD400]">₹{item.prices.lolly}</span>
+    </div>
+  )}
+</div>
         )}
       </div>
     </div>
