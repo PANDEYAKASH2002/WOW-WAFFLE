@@ -36,7 +36,7 @@ export const MenuSection: React.FC = () => {
     : [activeCategory];
 
   return (
-    <section id="menu" className="relative py-20 bg-[#080808] overflow-hidden">
+    <section id="menu" className="relative  bg-[#080808] overflow-hidden">
       {/* Ambient background SVGs */}
       <div className="absolute top-12 left-6 opacity-10 pointer-events-none hidden md:block">
         <WaffleOutline size={140} />

@@ -9,10 +9,10 @@ export const BRANCHES_DATA: Branch[] = [
     state: 'Gujarat',
     address: 'Shop No. 3, Garden City, Ankleshwar, Bharuch, Gujarat, India.',
     phone: '+91 98765 43210', // Configurable contact line for confirmed branch if needed
-    mapsUrl: 'https://www.google.com/maps/search/?api=1&query=Shop+No.+3+Garden+City+Ankleshwar+Bharuch+Gujarat+India',
+    mapsUrl: 'https://www.google.com/maps/place/Garden+City+Cricket+Ground+%26+Garba+Ground/@21.6047194,73.049984,17z/data=!4m15!1m8!3m7!1s0x3be0225adc5a0f5f:0x1ea3182a9da7bba5!2sJ333%2B4VF,+3,+Garden+City,+Give,+Gujarat+393001!3b1!8m2!3d21.6028404!4d73.054758!16s%2Fg%2F11wfy2rthk!3m5!1s0x3be0224ff960b8e5:0xc151c1bb02ca81c0!8m2!3d21.6047184!4d73.0525577!16s%2Fg%2F11c1tly79q?entry=ttu&g_ep=EgoyMDI2MDkzMC4wIKXMDSoASAFQAw%3D%3D',
     isConfirmed: true,
     tagline: 'Flagship Outlet • Garden City',
-    hours: '11:00 AM - 11:00 PM Daily'
+    hours: '9:00 PM - 3:00 AM Daily'
   },
   {
     id: 'branch-02',

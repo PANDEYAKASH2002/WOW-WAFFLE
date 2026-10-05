@@ -22,7 +22,7 @@ export const BranchesSection: React.FC = () => {
   });
 
   return (
-    <section id="branches" className="relative py-24 bg-[#0c0c0c] overflow-hidden">
+    <section id="branches" className="relative py-4 bg-[#0c0c0c] overflow-hidden">
       {/* Background Radial Glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#FFD400]/5 blur-[160px] rounded-full pointer-events-none" />
 
