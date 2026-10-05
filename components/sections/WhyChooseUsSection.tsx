@@ -34,7 +34,7 @@ const CARDS = [
 
 export const WhyChooseUsSection: React.FC = () => {
   return (
-    <section className="relative py-20 bg-[#0c0c0c] border-y border-[#222222]">
+    <section className="relative  bg-[#0c0c0c] border-y border-[#222222]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* HEADER */}

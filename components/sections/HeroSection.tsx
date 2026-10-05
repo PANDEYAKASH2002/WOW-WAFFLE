@@ -14,7 +14,7 @@ export const HeroSection: React.FC = () => {
   return (
     <section
       id="home"
-      className="relative min-h-screen pt-28 pb-16 md:pt-36 md:pb-24 flex items-center justify-center bg-[#080808] overflow-hidden"
+      className="relative min-h-screen pt-8 pb-16 md:pt-20 md:pb-24 flex items-center justify-center bg-[#080808] overflow-hidden"
     >
       {/* Background Radial Glow */}
       <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-[#FFD400]/10 blur-[140px] rounded-full pointer-events-none" />
@@ -112,7 +112,7 @@ export const HeroSection: React.FC = () => {
               className="pt-2 flex items-center justify-center lg:justify-start gap-2 text-xs font-bold text-[#888888]"
             >
               <WaffleSlice size={16} />
-              <span>MADE WITH LOVE ❤️ • 8 OUTLETS</span>
+              <span>MADE WITH LOVE ❤️ • 6 OUTLETS</span>
             </motion.div>
 
           </div>
@@ -160,21 +160,7 @@ export const HeroSection: React.FC = () => {
 
         </div>
 
-        {/* SCROLL INDICATOR */}
-        <motion.div
-          animate={{ y: [0, 10, 0] }}
-          transition={{ duration: 2, repeat: Infinity }}
-          className="mt-16 flex justify-center"
-        >
-          <a
-            href="#menu"
-            className="flex flex-col items-center gap-2 text-xs font-bold text-[#888888] hover:text-[#FFD400] transition-colors"
-            aria-label="Scroll to menu section"
-          >
-            <span>SCROLL TO EXPLORE</span>
-            <ArrowDown className="w-4 h-4 text-[#FFD400]" />
-          </a>
-        </motion.div>
+      
 
       </div>
     </section>
