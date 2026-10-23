@@ -4,20 +4,22 @@ import React, { useState, useEffect } from 'react';
 import { WowWaffleLogo } from '../illustrations/WowWaffleLogo';
 import { WaffleSlice } from '../illustrations/WaffleSlice';
 import { ConfettiButton } from '../animations/ConfettiButton';
-import { Menu, X, MapPin } from 'lucide-react';
+import { Menu, X, MapPin, StoreIcon } from 'lucide-react';
+import { FranchiseModal } from '../sections/FranchiseModal';   // adjust path
 
 const NAV_ITEMS = [
   { label: 'Home', href: '#home' },
   { label: 'Menu', href: '#menu' },
   { label: 'Branches', href: '#branches' },
   { label: 'About Us', href: '#about' },
-  // { label: 'Contact', href: '#contact' },
+  { label: 'Contact Us', href: '#contact' },
 ];
 
 export const Header: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [franchiseOpen, setFranchiseOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -112,14 +114,14 @@ export const Header: React.FC = () => {
           {/* DESKTOP CTA */}
           <div className="hidden lg:flex items-center gap-3">
             {/* <ConfettiButton label="🎉 Confetti" variant="nav" /> */}
-            <a
-              href="#branches"
-              onClick={(e) => handleNavClick(e, '#branches')}
-              className="flex items-center gap-2 bg-[#171717] hover:bg-[#FFD400] text-white hover:text-[#080808] border border-[#FFD400]/40 hover:border-[#FFD400] px-4 py-2 rounded-full text-xs font-black uppercase tracking-wider transition-all duration-300 shadow-md group"
-            >
-              <MapPin className="w-4 h-4 text-[#FFD400] group-hover:text-[#080808] transition-colors" />
-              <span>Find Nearest Outlet</span>
-            </a>
+          <button
+  onClick={() => setFranchiseOpen(true)}
+  className="flex items-center gap-2 bg-[#171717] hover:bg-[#FFD400] text-white hover:text-[#080808] border border-[#FFD400]/40 hover:border-[#FFD400] px-4 py-2 rounded-full text-xs font-black uppercase tracking-wider transition-all duration-300 shadow-md group"
+>
+  <StoreIcon className="w-4 h-4 text-[#FFD400] group-hover:text-[#080808] transition-colors" />
+  <span>Get Franchise</span>
+</button>
+
           </div>
 
           {/* MOBILE HAMBURGER (right side) */}
@@ -166,6 +168,8 @@ export const Header: React.FC = () => {
           </div>
         </div>
       )}
+
+      <FranchiseModal isOpen={franchiseOpen} onClose={() => setFranchiseOpen(false)} />
     </header>
   );
 };

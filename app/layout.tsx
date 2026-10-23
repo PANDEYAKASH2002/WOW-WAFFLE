@@ -42,7 +42,7 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <script src="https://cdn.tailwindcss.com"></script>
       </head>
-      <body className="bg-[#080808] text-white antialiased selection:bg-[#FFD400] selection:text-[#080808]" suppressHydrationWarning>
+      <body suppressHydrationWarning className="bg-[#080808] text-white antialiased selection:bg-[#FFD400] selection:text-[#080808]" suppressHydrationWarning>
         {children}
       </body>
     </html>

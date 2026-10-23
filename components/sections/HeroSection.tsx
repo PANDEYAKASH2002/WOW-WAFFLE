@@ -1,15 +1,176 @@
 'use client';
 
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
-import { motion } from 'framer-motion';
+import {
+  motion,
+  animate,
+  useMotionValue,
+  useTransform,
+  useReducedMotion,
+  MotionValue,
+} from 'framer-motion';
 import { Sparkle } from '../illustrations/Sparkle';
 import { StarBurst } from '../illustrations/StarBurst';
 import { WowSticker } from '../illustrations/WowSticker';
 import { WaffleSlice } from '../illustrations/WaffleSlice';
 import { WaffleStack } from '../illustrations/WaffleStack';
-import { ArrowDown, Utensils, MapPin } from 'lucide-react';
+import { Utensils, MapPin } from 'lucide-react';
 
+/* ------------------------------------------------------------------ */
+/* EDIT THIS LIST: your waffle & brownie images (put files in /public) */
+/* Transparent PNGs look best. Alternate waffle / brownie for variety. */
+/* ------------------------------------------------------------------ */
+const ORBIT_ITEMS = [
+  { src: '/images/brownie-oreo.png', alt: 'oreo brownie' },
+  { src: '/images/creamy-red-velvet.png', alt: 'red velvet' },
+    { src: '/images/brownie-biscoff-fudge.png', alt: 'Chocolate waffle stack' },
+
+  { src: '/images/choco-loaded.png', alt: 'Loaded waffle' },
+  { src: '/images/triple-chocolate-brownie.png', alt: 'Chocolate brownie' },
+    { src: '/images/kit-kat-nutella.png', alt: 'Nutella waffle' },
+
+];
+
+const ORBIT_SECONDS = 36; // time for one full lap (higher = slower)
+
+/* Vertical anchor of the orbit center (smaller % = higher up) */
+const ORBIT_TOP = '42%';
+
+/* ------------------------------------------------------------------ */
+/* One item travelling around the horizontal ellipse                   */
+/* ------------------------------------------------------------------ */
+type OrbitItemProps = {
+  src: string;
+  alt: string;
+  index: number;
+  total: number;
+  angle: MotionValue<number>;
+  rx: number;
+  ry: number;
+  size: number;
+};
+
+const OrbitItem: React.FC<OrbitItemProps> = ({ src, alt, index, total, angle, rx, ry, size }) => {
+  const offset = (index / total) * 360;
+  const rad = (a: number) => ((a + offset) * Math.PI) / 180;
+
+  // Horizontal circular motion: wide on X, shallow on Y
+  const x = useTransform(angle, (a) => Math.cos(rad(a)) * rx);
+  const y = useTransform(angle, (a) => Math.sin(rad(a)) * ry);
+
+  // Depth: items at the front (bottom of the ellipse) are bigger and brighter
+  const depth = useTransform(angle, (a) => (Math.sin(rad(a)) + 1) / 2); // 0 (back) → 1 (front)
+  const scale = useTransform(depth, [0, 1], [0.6, 1.05]);
+  const opacity = useTransform(depth, [0, 1], [0.45, 1]);
+  const zIndex = useTransform(depth, (d) => Math.round(d * 100));
+
+  return (
+    <motion.div
+      className="absolute left-1/2 rounded-2xl overflow-hidden border-2 border-[#FFD400]/50 bg-[#171717] shadow-[0_15px_35px_rgba(0,0,0,0.8)]"
+      style={{
+        top: ORBIT_TOP,
+        width: size,
+        height: size,
+        marginLeft: -size / 2,
+        marginTop: -size / 2,
+        x,
+        y,
+        scale,
+        opacity,
+        zIndex,
+      }}
+    >
+      <Image src={src} alt={alt} fill className="object-cover" sizes="240px" />
+      <div className="absolute inset-0 bg-gradient-to-t from-[#080808]/60 via-transparent to-transparent" />
+    </motion.div>
+  );
+};
+
+/* ------------------------------------------------------------------ */
+/* The orbit container                                                 */
+/* ------------------------------------------------------------------ */
+const WaffleOrbit: React.FC = () => {
+  const reduceMotion = useReducedMotion();
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [width, setWidth] = useState(480);
+  const angle = useMotionValue(0);
+
+  // Measure container so the orbit scales on mobile
+  useEffect(() => {
+    const el = containerRef.current;
+    if (!el) return;
+    const ro = new ResizeObserver(([entry]) => setWidth(entry.contentRect.width));
+    ro.observe(el);
+    setWidth(el.getBoundingClientRect().width);
+    return () => ro.disconnect();
+  }, []);
+
+  // Slow, endless rotation
+  useEffect(() => {
+    if (reduceMotion) return;
+    const controls = animate(angle, 360, {
+      duration: ORBIT_SECONDS,
+      ease: 'linear',
+      repeat: Infinity,
+    });
+    return () => controls.stop();
+  }, [angle, reduceMotion]);
+
+  // Smaller images + wider radius = clear gaps between items
+  const size = width * 0.34;
+  const rx = width * 0.40;
+  const ry = width * 0.18;
+
+  return (
+    <div
+      ref={containerRef}
+      className="relative w-full max-w-[560px] mx-auto"
+      style={{ height: width * 0.88 }}
+      aria-label="Waffles and brownies rotating"
+    >
+      {/* Glow under the orbit */}
+      <div
+        className="absolute left-1/2 w-[85%] h-[45%] bg-[#FFD400]/15 blur-[70px] rounded-full pointer-events-none"
+        style={{ top: ORBIT_TOP, transform: 'translate(-50%, -50%)' }}
+      />
+
+      {/* Orbit track (the horizontal circle) */}
+      <div
+        className="absolute left-1/2 rounded-[50%] border border-dashed border-[#FFD400]/30 pointer-events-none"
+        style={{
+          top: ORBIT_TOP,
+          transform: 'translate(-50%, -50%)',
+          width: rx * 2,
+          height: ry * 2,
+        }}
+      />
+
+      {ORBIT_ITEMS.map((item, i) => (
+        <OrbitItem
+          key={item.src}
+          {...item}
+          index={i}
+          total={ORBIT_ITEMS.length}
+          angle={angle}
+          rx={rx}
+          ry={ry}
+          size={size}
+        />
+      ))}
+
+      {/* Caption badge */}
+      <div className="absolute bottom-1 left-1/2 -translate-x-1/2 z-[200] bg-[#171717] border border-[#FFD400] px-4 py-2 rounded-2xl shadow-xl flex items-center gap-2 whitespace-nowrap">
+        <span className="text-xl">🍫</span>
+        <span className="text-xs font-black text-white uppercase">Loaded with Nutella & Brownies</span>
+      </div>
+    </div>
+  );
+};
+
+/* ------------------------------------------------------------------ */
+/* Hero section                                                        */
+/* ------------------------------------------------------------------ */
 export const HeroSection: React.FC = () => {
   return (
     <section
@@ -38,12 +199,10 @@ export const HeroSection: React.FC = () => {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-          
           {/* LEFT COLUMN: TEXT & CTA */}
-          <div className="lg:col-span-7 space-y-6 text-center lg:text-left">
-            
+          <div className="lg:col-span-6 space-y-6 text-center lg:text-left">
             {/* BADGE */}
-            <motion.div
+            {/* <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
@@ -53,7 +212,7 @@ export const HeroSection: React.FC = () => {
               <span className="text-[#FFD400] text-xs sm:text-sm font-extrabold uppercase tracking-widest">
                 FRESHLY MADE. CRAZY DELICIOUS.
               </span>
-            </motion.div>
+            </motion.div> */}
 
             {/* HEADLINE */}
             <motion.h1
@@ -114,54 +273,24 @@ export const HeroSection: React.FC = () => {
               <WaffleSlice size={16} />
               <span>MADE WITH LOVE ❤️ • 6 OUTLETS</span>
             </motion.div>
-
           </div>
 
-          {/* RIGHT COLUMN: HERO WAFFLE ARTWORK */}
-          <div className="lg:col-span-5 relative flex items-center justify-center">
-            
-            {/* WOW STICKER */}
-            <div className="absolute -top-6 right-2 sm:right-6 z-20">
+          {/* RIGHT COLUMN: ROTATING WAFFLES & BROWNIES */}
+          <div className="lg:col-span-6 relative flex items-center justify-center">
+            <div className="absolute -top-4 right-2 sm:right-6 z-[300]">
               <WowSticker />
             </div>
 
-            {/* MAIN FLOATING HERO IMAGE CONTAINER */}
             <motion.div
-              initial={{ opacity: 0, scale: 0.8, rotate: -3 }}
-              animate={{ opacity: 1, scale: 1, rotate: 0 }}
+              initial={{ opacity: 0, scale: 0.85 }}
+              animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.8, delay: 0.3 }}
-              className="relative w-full max-w-[420px] aspect-square rounded-3xl p-3 bg-gradient-to-b from-[#FFD400]/30 via-[#171717] to-[#080808] border-2 border-[#FFD400]/50 shadow-[0_20px_50px_rgba(0,0,0,0.9)]"
+              className="w-full"
             >
-              {/* Floating inner image wrapper */}
-              <motion.div
-                animate={{ y: [0, -12, 0] }}
-                transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }}
-                className="relative w-full h-full rounded-2xl overflow-hidden group"
-              >
-                <Image
-                  src="/images/hero_waffle.jpg"
-                  alt="WOW! WAFFLE Stack with chocolate drizzle and nuts"
-                  fill
-                  priority
-                  className="object-cover group-hover:scale-105 transition-transform duration-700"
-                  sizes="(max-width: 768px) 100vw, 420px"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#080808] via-transparent to-transparent opacity-40" />
-              </motion.div>
-
-              {/* Floating Chocolate Drip & Sparkles around image */}
-              <div className="absolute -bottom-4 -left-4 z-20 bg-[#171717] border border-[#FFD400] px-4 py-2 rounded-2xl shadow-xl flex items-center gap-2">
-                <span className="text-xl">🍫</span>
-                <span className="text-xs font-black text-white uppercase">Loaded with Nutella & Brownies</span>
-              </div>
+              <WaffleOrbit />
             </motion.div>
-
           </div>
-
         </div>
-
-      
-
       </div>
     </section>
   );
